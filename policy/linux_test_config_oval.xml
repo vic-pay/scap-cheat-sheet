@@ -9,7 +9,7 @@ xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
 
   <generator>
     <oval:product_name>Ubuntu test config oval</oval:product_name>
-    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:schema_version>5.11</oval:schema_version>
     <oval:timestamp>2024-03-02T02:30:02.000-03:00</oval:timestamp>
   </generator>
 
