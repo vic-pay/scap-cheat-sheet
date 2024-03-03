@@ -1,0 +1,11 @@
+services:
+  openscap:
+    image: ubuntu:22.04
+    container_name: openscap
+    hostname:       openscap
+    command: tail -f /dev/null
+    volumes:
+      - type: bind
+        source: ./policy
+        target: /mnt/policy
+        read_only: true
