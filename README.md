@@ -8,10 +8,11 @@ Prepare environment in docker:
 
     docker-compose up -d
     docker exec -it openscap bash 
-    apt update
-    apt install -y libopenscap8
+    apt update && apt install -y libopenscap8
 
 ## Usage
+
+### Policy
 
 Check custom policy:
 
@@ -43,6 +44,18 @@ Result:
 
     Definition oval:linux_test_config:def:1: true
     Evaluation done.
+
+### Benchmark
+
+Check benchmark:
+
+    oscap xccdf validate /mnt/policy/linux_test_xccdf.xml
+
+    oscap info /mnt/policy/linux_test_xccdf.xml
+
+Run:
+
+    oscap xccdf eval /mnt/policy/linux_test_xccdf.xml
 
 ## Useful resources
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Benchmark
+xmlns="http://checklists.nist.gov/xccdf/1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+id="xccdf_linuxtest_benchmark_1.0">
+  <status>draft</status>
+  <title>Linux test benchmark</title>
+  <description></description>
+  <version>1</version>
+  
+  <Profile id="xccdf_linuxtest_profile_1.0">
+    <title>inux test profile</title>
+    <description></description>
+    <select idref="xccdf_linuxtest_group_1.0" selected="true"/>
+  </Profile>
+  
+  <Group id="xccdf_linuxtest_group_1.0">
+    <title>Linux test group</title>
+    <description></description>
+    
+    <Rule id="xccdf_linuxtestconfig_rule_1.0" selected="true" severity="medium">
+      <title>Test config content</title>
+      <description></description>
+      <fixtext>Put "test" in /tmp/test.conf</fixtext>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:linux_test_config:def:1" href="linux_test_config_oval.xml"/>
+      </check>
+    </Rule>
+
+    <Rule id="xccdf_linuxtestfile_rule_1.0" selected="true" severity="medium">
+      <title>Test file permissions</title>
+      <description></description>
+      <fixtext>chmod 644 /tmp/test.conf; chown root:root /tmp/test.conf</fixtext>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:linux_test_file:def:1" href="linux_test_file_oval.xml"/>
+      </check>
+    </Rule>
+
+    <Rule id="xccdf_linuxtestservice_rule_1.0" selected="false" severity="medium">
+      <title>Test service state</title>
+      <description></description>
+      <fixtext>Start apparmor service or unit</fixtext>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:linux_test_service:def:1" href="linux_test_service_oval.xml"/>
+      </check>
+    </Rule>
+
+  </Group>
+</Benchmark>

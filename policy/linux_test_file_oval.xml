@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<oval_definitions 
+xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd"
+xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+
+  <generator>
+    <oval:product_name>Ubuntu test file oval</oval:product_name>
+    <oval:schema_version>5.11</oval:schema_version>
+    <oval:timestamp>2024-03-02T02:30:02.000-03:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+    <definition 
+    id="oval:linux_test_file:def:1" 
+    class="compliance"
+    version="1">
+      <metadata>
+        <title>Linux test file</title>
+        <description>Linux test file permissions</description>
+        <affected family="unix">
+          <platform>Ubuntu</platform>
+        </affected>
+      </metadata>
+      <criteria operator="AND">
+        <criterion test_ref="oval:linux_test_file:tst:1"/>
+      </criteria>
+    </definition>
+  </definitions>
+
+  <tests>
+    <file_test 
+    id="oval:linux_test_file:tst:1" 
+    check="all"
+    check_existence="at_least_one_exists"
+    version="1"
+    comment="Test /tmp/test.conf permissions"
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:linux_test_file:obj:1"/>
+      <state state_ref="oval:linux_test_file:ste:1"/>
+    </file_test>
+  </tests>
+
+  <objects>
+    <file_object 
+    id="oval:linux_test_file:obj:1"
+    version="1"
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <path>/tmp</path>
+      <filename>test.conf</filename>
+    </file_object>
+  </objects>
+
+  <states>
+    <file_state 
+    id="oval:linux_test_file:ste:1"
+    version="1" 
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <group_id datatype="int" operation="equals">0</group_id>
+      <user_id datatype="int">0</user_id>
+
+      <uread datatype="boolean">true</uread>
+      <uwrite datatype="boolean">true</uwrite>
+      <uexec datatype="boolean">false</uexec>
+      
+      <gread datatype="boolean">true</gread>
+      <gwrite datatype="boolean">false</gwrite>
+      <gexec datatype="boolean">false</gexec>
+
+      <oread datatype="boolean">true</oread>
+      <owrite datatype="boolean">false</owrite>
+      <oexec datatype="boolean">false</oexec>
+    </file_state>
+  </states>
+</oval_definitions>
