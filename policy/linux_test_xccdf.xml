@@ -46,5 +46,14 @@ id="xccdf_linuxtest_benchmark_1.0">
       </check>
     </Rule>
 
+    <Rule id="xccdf_linuxtestversion_rule_1.0" selected="true" severity="medium">
+      <title>Test package version</title>
+      <description></description>
+      <fixtext>Upgrade apparmor</fixtext>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:linux_test_version:def:1" href="linux_test_version_oval.xml"/>
+      </check>
+    </Rule>
+
   </Group>
 </Benchmark>

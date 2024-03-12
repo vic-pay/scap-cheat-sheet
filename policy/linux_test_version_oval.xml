@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<oval_definitions 
+xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd"
+xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+
+  <generator>
+    <oval:product_name>Ubuntu test version oval</oval:product_name>
+    <oval:schema_version>5.11</oval:schema_version>
+    <oval:timestamp>2024-03-02T02:30:02.000-03:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+    <definition 
+    id="oval:linux_test_version:def:1" 
+    class="compliance" 
+    version="1">
+      <metadata>
+        <title>Test apparmor version</title>
+        <description>Package apparmor should be more than 3.0.0</description>
+        <affected family="unix">
+          <platform>Ubuntu</platform>
+        </affected>
+      </metadata>
+      <criteria operator="AND">
+        <criterion test_ref="oval:linux_test_version:tst:1"/>
+      </criteria>
+    </definition>
+  </definitions>
+
+  <tests>
+    <dpkginfo_test 
+    id="oval:linux_test_version:tst:1" 
+    check="at least one" 
+    check_existence="at_least_one_exists" 
+    comment="Package should be version" 
+    version="1"
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:linux_test_service:obj:1"/>
+      <state state_ref="oval:linux_test_service:ste:1"/>
+    </dpkginfo_test>
+  </tests>
+
+  <objects>
+    <dpkginfo_object 
+    id="oval:linux_test_service:obj:1"
+    comment="Retrieve the ActiveState property of apparmor" 
+    version="1"
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>libapparmor1</name>
+    </dpkginfo_object>
+  </objects>
+
+  <states>
+    <dpkginfo_state
+    id="oval:linux_test_service:ste:1" 
+    comment="apparmor is running"
+    version="1"
+    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <evr datatype="evr_string" operation="greater than or equal">3.0.0</evr>
+    </dpkginfo_state>
+  </states>
+</oval_definitions>
